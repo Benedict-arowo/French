@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Results</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f4f4f9;
+				color: #333;
+				margin: 0;
+				padding: 0;
+			}
+			h1 {
+				text-align: center;
+				color: #0056b3;
+			}
+			table {
+				width: 80%;
+				margin: 20px auto;
+				border-collapse: collapse;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				background-color: white;
+			}
+			th,
+			td {
+				padding: 12px;
+				text-align: left;
+				border: 1px solid #ddd;
+			}
+			th {
+				background-color: #0056b3;
+				color: white;
+			}
+			tr:nth-child(even) {
+				background-color: #f2f2f2;
+			}
+			tr:hover {
+				background-color: #ddd;
+			}
+			a {
+				display: block;
+				text-align: center;
+				padding: 10px 20px;
+				margin-top: 20px;
+				background-color: #0056b3;
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+			}
+			a:hover {
+				background-color: #00408d;
+			}
+			.title {
+				padding: 0px 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Results</h1>
+
+		<h2 class="title">Final Results</h2>
+		<table>
+			<tr>
+				<th>#</th>
+				<th>Full Name</th>
+				<th>Phone Number</th>
+				<th>Score</th>
+			</tr>
+			{% for student in final %}
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ student.full_name }}</td>
+				<td>{{ student.phone_number }}</td>
+				<td>{{ student.score }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<h2 class="title">Missed Students</h2>
+		<table>
+			<tr>
+				<th>#</th>
+				<th>Full Name</th>
+				<th>Phone Number</th>
+			</tr>
+			{% for student in missed %}
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ student.full_name }}</td>
+				<td>{{ student.phone_number }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<a href="/download/{{ result_file }}">Download Results</a>
+	</body>
+</html>
